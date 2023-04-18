@@ -71,7 +71,7 @@ Procure 'Paranaguá', PR, nesta barra de pesquisa GEE e clique no resultado para
 . Salvei com o nome 'Lab0'.
 
 4. Procure por 'Landsat 9 Level 2' na barra de pesquisa. Na seção de resultados, você verá 'USGS Landsat 9 Level 2, Collection 2, Tier 2'.
-![image](https://user-images.githubusercontent.com/41900626/232891755-0be1af97-2196-42ec-beec-62c13d0f8896.png)
+
 
 
 Clique nele e observe as importantes descrições do tipo de produto, como resolução espacial. Uma melhor visualização é alcançada clicando no canto superior direito, conforme indicado na figura.
