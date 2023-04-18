@@ -1,5 +1,5 @@
 # Sensoriamento Remoto
-Lab 0 - Comportamento espectral dos alvos
+Lab 0 - Composição colorida e leitura de pixels
 --------------
 
 ### Agradecimentos
@@ -15,7 +15,7 @@ A conclusão deste exercício de laboratório requer o uso do navegador Google C
 
 Uma vez registrado, você pode acessar o ambiente do Earth Engine aqui: https://code.earthengine.google.com
 
-O Google Earth Engine usa a linguagem de programação JavaScript. Abordaremos o básico desta linguagem durante este curso. Se você quiser mais detalhes, pode ler a introdução fornecida aqui:
+A linguagem de programação JavaScript será utilizada nesse tutorial. Abordaremos o básico desta linguagem durante este curso. Se você quiser mais detalhes, pode ler a introdução fornecida aqui:
 
 [JavaScript background](https://developers.google.com/earth-engine/tutorials/tutorials)
 
@@ -23,7 +23,7 @@ O Google Earth Engine usa a linguagem de programação JavaScript. Abordaremos o
 
 ### Objetivo
 ---------
-O objetivo deste laboratório é fornecer uma introdução ao ambiente de processamento do GEE e realizar a leitura dos valores dos pixels dos diferentes alvos da superfície terrestre.
+O objetivo deste laboratório é fornecer uma introdução ao ambiente de processamento do GEE e realizar a leitura dos valores dos pixels de diferentes alvos da superfície terrestre.
 
 
 
@@ -70,8 +70,9 @@ Procure 'Paranaguá', PR, nesta barra de pesquisa GEE e clique no resultado para
  Nota: Você já pode salvar seu código em ![image](https://user-images.githubusercontent.com/41900626/178795780-e672f2b2-2472-4e9c-b32c-8caef6e928da.png)
 . Salvei com o nome 'Lab0'.
 
-4. Procure por 'Landsat 5 surface' na barra de pesquisa. Na seção de resultados, você verá 'USGS Landsat 5 Level 2, Collection 2, Tier 1'.
-![image](https://user-images.githubusercontent.com/41900626/178796322-90d5b518-4a66-4e4c-9417-4023fa4f59bb.png)
+4. Procure por 'Landsat 9 Level 2' na barra de pesquisa. Na seção de resultados, você verá 'USGS Landsat 5 Level 2, Collection 2, Tier 1'.
+
+
 Clique nele e observe as importantes descrições do tipo de produto, como resolução espacial. Uma melhor visualização é alcançada clicando no canto superior direito, conforme indicado na figura.
 ![image](https://user-images.githubusercontent.com/41900626/178797162-dea6d5be-e7b5-4a6f-8838-39008e319578.png)
 
