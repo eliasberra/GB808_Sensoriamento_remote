@@ -74,43 +74,36 @@ Procure 'Paranaguá', PR, nesta barra de pesquisa GEE e clique no resultado para
 
 
 
-Clique nele e observe as importantes descrições do tipo de produto, como resolução espacial. Uma melhor visualização é alcançada clicando no canto superior direito, conforme indicado na figura.
-![image](https://user-images.githubusercontent.com/41900626/178797162-dea6d5be-e7b5-4a6f-8838-39008e319578.png)
+Clique nele e observe as importantes descrições do tipo de produto, como resolução espacial e radiométrica. Navegue pelas abas 'Description', 'Bands' e 'Image Properties'. Uma melhor visualização é alcançada clicando no canto superior direito, conforme indicado na figura.
+![image](https://user-images.githubusercontent.com/41900626/233171123-aa10b516-a6ea-4640-9af8-d16c9dbbe711.png)
+
 
 Após essa analise, volte alguns passos e clique no botão 'Import'.
-![image](https://user-images.githubusercontent.com/41900626/178797596-25c93775-9dd1-48fa-b0f1-7999eda3437e.png)
+![image](https://user-images.githubusercontent.com/41900626/233172059-050dadf5-517d-4e74-923a-fcc8ecff1757.png)
 
-5. Após clicar em 'Import', o Landsat-5 será adicionado às nossas importações ('Imports') no painel de Codificação como uma variável (var). Ele será listado abaixo do ponto de geometria do cidade de 'paranagua' com o nome padrão "imageCollection" (coleção de imagens). Vamos renomeá-lo para “land5” clicando em 'imageCollection' e digitando “land5”.
-![image](https://user-images.githubusercontent.com/41900626/178797936-98cc6d8e-2246-49b4-8825-dbea9b4c16a6.png)
 
-6. É importante entender que agora adicionamos acesso à coleção completa de imagens do Landsat-5 (ou seja, todas as imagens que foram coletadas até o momento) ao nosso script. Para este exercício, não queremos carregar todas essas imagens - queremos uma única imagem livre de nuvem sobre a cidade de Paranaguá. Dessa forma, agora podemos filtrar a coleção de imagens com alguns critérios, como intervalo de aquisição, localização espacial e cobertura de nuvens.
+5. Após clicar em 'Import', as imagens/bandas Landsat-9 serão adicionadas às nossas importações ('Imports') no painel de Codificação como uma variável (var). Ele será listado abaixo do ponto de geometria do cidade de 'paranagua' com o nome padrão "imageCollection" (coleção de imagens). Vamos renomeá-lo para “land9” clicando em 'imageCollection' e digitando “land9”.
+![image](https://user-images.githubusercontent.com/41900626/233172525-7c150f6c-dafb-4b5b-99b7-274703f80863.png)
+
+
+6. É importante entender que agora adicionamos acesso à coleção completa de imagens do Landsat-9 ao nosso script (ou seja, todas as imagens que foram coletadas até a data de hoje). Para este exercício, não queremos carregar todas essas imagens - queremos uma única imagem, livre de nuvens, sobre a cidade de Paranaguá. Dessa forma, devemos filtrar a coleção de imagens utilizando alguns critérios, como intervalo de aquisição, localização espacial e cobertura de nuvens.
 
 
 
 
 ### Filtrando coleções de imagens
 
-7. Para filtrar a coleção, precisamos usar um pouco de codificação. Na linguagem de programação JavaScript, duas barras (//) indicam linhas de comentários e são ignoradas quando rodamos o processamento. Usamos // para escrever notas para nós mesmos em nosso código, para que nós (e outros que queiram usar nosso código) possamos entender por que fizemos certas coisas.
-Você pode digitar manualmente o código abaixo, o que é legal para aprender a linguagem, ou simplesmente copiar todo o código acima e colá-lo na caixa do editor de código do GEE.
+7. Para filtrar a coleção, precisamos usar um pouco de codificação. Na linguagem de programação JavaScript, duas barras (//) indicam linhas de comentários e são ignoradas quando rodamos o processamento. Usamos // para escrever notas para nós mesmos em nosso código, para que nós (e outros que queiram usar nosso código) possamos entender por que estamos utilizando o código escolhido.
+Você pode digitar manualmente o código abaixo, o que é legal para aprender a linguagem, ou simplesmente copiar todo o código e colá-lo na caixa do editor de código do GEE.
 
 ```JavaScript
-// Esta é nossa primeira linha de código. Vamos definir a coleção de imagens com a qual estamos trabalhando escrevendo este comando
-    var imagem = ee.Image(land5
-
-    // Em seguida, incluiremos um filtro para obter apenas imagens no intervalo de datas em que estamos interessados
-    .filterDate("2010-07-01", "2010-12-31")
-
-    // Em seguida, incluímos um filtro geográfico para restringir a pesquisa a imagens no local do nosso ponto
-    .filterBounds(paranagua)
-
-    // Em seguida, também classificaremos a coleção por uma propriedade de metadados, no nosso caso, a cobertura de nuvens é muito útil
-    .sort("CLOUD_COVER")
-
-    // Agora vamos selecionar a primeira imagem desta coleção - ou seja, a imagem mais livre de nuvens no intervalo de datas
-    .first());
-
-    // E vamos imprimir a imagem no console.
-    print("Uma cena do Landsat 5:", imagem);
+var imagem = ee.Image(land9 //Coleção de imagens 
+            .filterDate("2010-07-01", "2010-12-31") //filtro de datas
+            .filterBounds(paranagua) //filtro de local
+            .sort("CLOUD_COVER") //organizar imagens pela % de cobertura de nuvens 
+            .first()); //seleciona a primeira imagem desta coleção - ou seja, a imagem com menor cobertura de nuvens
+  
+print("Uma cena do Landsat 5:", imagem); // imprime a imagem selecionada no console.
 ```
 
 8. Em seguida, clique no botão "Run" (executar) e veja o GEE fazer sua mágica... 
