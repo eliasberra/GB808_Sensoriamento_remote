@@ -65,21 +65,23 @@ Procure 'Paranaguá', PR, nesta barra de pesquisa GEE e clique no resultado para
 ![image](https://user-images.githubusercontent.com/41900626/178795354-74c3042e-707d-4625-b806-5cb0f4b48141.png)
 
 3. Renomeie o ponto resultante como 'paranagua' clicando no nome da 'Imports' (que é chamado de 'geometry' por padrão).
- ![image](https://user-images.githubusercontent.com/41900626/178795572-b59562aa-19cf-448b-9099-02586706b05b.png)
+![image](https://user-images.githubusercontent.com/41900626/233175490-c880eab6-e85a-4b60-b3d4-82c8838e12f5.png)
+
  
  Nota: Você já pode salvar seu código em ![image](https://user-images.githubusercontent.com/41900626/178795780-e672f2b2-2472-4e9c-b32c-8caef6e928da.png)
 . Salvei com o nome 'Lab0'.
 
-4. Procure por 'Landsat 9 Level 2' na barra de pesquisa. Na seção de resultados, você verá 'USGS Landsat 9 Level 2, Collection 2, Tier 2'.
+4. Procure por 'Landsat 9 Level 2' na barra de pesquisa. Na seção de resultados, você verá 'USGS Landsat 9 Level 2, Collection 2, Tier 1'.
 
 
 
 Clique nele e observe as importantes descrições do tipo de produto, como resolução espacial e radiométrica. Navegue pelas abas 'Description', 'Bands' e 'Image Properties'. Uma melhor visualização é alcançada clicando no canto superior direito, conforme indicado na figura.
-![image](https://user-images.githubusercontent.com/41900626/233171123-aa10b516-a6ea-4640-9af8-d16c9dbbe711.png)
+![image](https://user-images.githubusercontent.com/41900626/233184861-990d8678-d221-4dd5-8e78-99481f4bfeab.png)
+
 
 
 Após essa analise, volte alguns passos e clique no botão 'Import'.
-![image](https://user-images.githubusercontent.com/41900626/233172059-050dadf5-517d-4e74-923a-fcc8ecff1757.png)
+![image](https://user-images.githubusercontent.com/41900626/233185823-21fff982-9614-4789-be7f-829f87ed7f50.png)
 
 
 5. Após clicar em 'Import', as imagens/bandas Landsat-9 serão adicionadas às nossas importações ('Imports') no painel de Codificação como uma variável (var). Ele será listado abaixo do ponto de geometria do cidade de 'paranagua' com o nome padrão "imageCollection" (coleção de imagens). Vamos renomeá-lo para “land9” clicando em 'imageCollection' e digitando “land9”.
@@ -98,28 +100,32 @@ Você pode digitar manualmente o código abaixo, o que é legal para aprender a 
 
 ```JavaScript
 var imagem = ee.Image(land9 //Coleção de imagens 
-            .filterDate("2010-07-01", "2010-12-31") //filtro de datas
+            .filterDate("2021-01-01", "2023-04-19") //filtro de datas
             .filterBounds(paranagua) //filtro de local
             .sort("CLOUD_COVER") //organizar imagens pela % de cobertura de nuvens 
             .first()); //seleciona a primeira imagem desta coleção - ou seja, a imagem com menor cobertura de nuvens
   
-print("Uma cena do Landsat 5:", imagem); // imprime a imagem selecionada no console.
+print("Uma cena do Landsat 9:", imagem); // imprime a imagem selecionada no console.
 ```
 
 8. Em seguida, clique no botão "Run" (executar) e veja o GEE fazer sua mágica... 
-Este pedaço de código pesquisará o arquivo completo do Landsat-5, encontrará imagens localizadas em Paranaguá, PR (na interseção com o ponto que você escolheu, para ser mais preciso), irá classificá-las de acordo com a porcentagem de cobertura de nuvens e, em seguida, retornará a imagem mais livre de cobertura de nuvens. As informações relacionadas a esta imagem serão impressas no Console, onde está listada como "Uma cena do Landsat 5:" com alguns detalhes sobre essa cena ('Image LANDSAT/LT05/C02/T1_L2/LT05_220078_20101119 (19 bands)'). Sabemos pelo nome da cena que foi coletado em 19 de novembro de 2010.
-![image](https://user-images.githubusercontent.com/41900626/178800777-2ff5c8a4-b7ba-4206-9270-31834fa590f4.png)
+Este pedaço de código pesquisará o arquivo completo do Landsat-9, encontrará imagens localizadas em Paranaguá, PR (na interseção com o ponto que você escolheu, para ser mais preciso), irá classificá-las de acordo com a porcentagem de cobertura de nuvens e, em seguida, retornará a imagem com menor cobertura de nuvens. As informações relacionadas a esta imagem serão impressas no Console (lado direito), onde está listada como "Uma cena do Landsat 9:" com alguns detalhes sobre essa cena.
+Consegues descobrir quando foi coletada a cena?.
+![image](https://user-images.githubusercontent.com/41900626/233186377-ec8688f4-6041-4303-8b02-cb21f9de91b1.png)
+
+
 
 
 
 ## Adicionando imagens à visualização do mapa ('Map view')
-1. Agora, para realmente dar uma olhada nesta imagem, precisamos adicioná-la ao nosso ambiente de mapeamento (similarmente a um SIG como QGIS). Antes de fazer isso, no entanto, vamos definir como queremos exibir a imagem. Vamos começar com uma representação de cores verdadeiras colando as seguintes linhas abaixo das que você já adicionou e clique em "Run".
+1. Agora, para realmente dar uma olhada nesta imagem, precisamos adicioná-la ao nosso ambiente de mapeamento (similarmente a um SIG como QGIS). Antes de fazer isso, no entanto, vamos definir como queremos exibir a imagem. Vamos começar com uma representação de cores verdadeiras, digitando as linhas abaixo (clique "Run" sempre que quiser executar o código).
 
 ```JavaScript
   // Adiciona uma composição RGB em cores verdadeiras (Bandas 3,2 e 1) ao mapa, primeiramente sem contraste.
-   Map.addLayer(imagem, {bands: ["SR_B3", "SR_B2", "SR_B1"]}, "sem contraste");
+   Map.addLayer(imagem, {bands: ["SR_B4", "SR_B3", "SR_B2"]}, "sem contraste");
 ```
-![image](https://user-images.githubusercontent.com/41900626/178990072-3df5f050-3c40-4e79-934e-b4af53b0968d.png)
+![image](https://user-images.githubusercontent.com/41900626/233187338-d682c43c-1e35-426e-91d1-25abc4b62a43.png)
+
 Observe como a composição colorida se apresenta bastante escura.
 
 
@@ -127,7 +133,7 @@ Agora, vamos definir um contraste para melhorar a vizualização da nossa compos
 ```JavaScript
   // Defina os parâmetros de visualização em um dicionário JavaScript para renderização de cores verdadeiras. Bandas 3,2 e 1 são necessárias para tal.
     var parVizualizacao = {
-        bands: ["SR_B3", "SR_B2", "SR_B1"],//A serem associadas ao canais de cores R-G-B
+        bands: ["SR_B4", "SR_B3", "SR_B2"],//A serem associadas ao canais de cores R-G-B
         min: 7000,//Os valores em min: e max: definem os limiares de contraste a ser aplicado
         max: 12000
         };
@@ -135,7 +141,8 @@ Agora, vamos definir um contraste para melhorar a vizualização da nossa compos
   // Adicione a imagem ao mapa, usando os parâmetros de visualização.
   Map.addLayer(imagem, parVizualizacao, "imagem de cor verdadeira");
 ```
-![image](https://user-images.githubusercontent.com/41900626/178991066-c8f834e7-2324-42b4-89ae-1385f1561bc3.png)
+![image](https://user-images.githubusercontent.com/41900626/233188509-d466dcb2-4322-4c70-a9fa-3192b982280f.png)
+
 
 
 10. Este código especifica que para uma imagem de cores verdadeiras, as bandas 3,2 e 1 devem ser usadas na composição RGB. Depois que a imagem aparecer no mapa, você poderá ampliar e explorar Paranaguá e arredores. Os símbolos (+) e (-) no canto superior esquerdo do ambinete de mapa podem ser usados para aplicar diferentes níveis de zoom na cena (também possível com a roda de rolagem do mouse/trackpad). 
