@@ -154,15 +154,25 @@ Experimente diferentes limiares de contraste alterando os valores de 'min:' (val
 ## Crie composições coloridas com diferentes bandas espectrais
 
 Você aprendeu acima como criar uma composição colorida em cores verdadeiras. 
-Agora crie composições falsa-cor e coloque as bandas nos filtros de cor seguindo as seguintes sequências:
-R3G4B5/ R4G5B3/ R5G3B4/ R5G4B3
+Agora crie composições falsa-cor e coloque as bandas nos filtros de cor seguindo as seguintes sequências (Nota: provavelmente você terá que ajustar também o valor de 'min:' e 'max:' para definir um contraste ótimo para a nova composição):
+
+a) R4-G5-B6 (ex. bands: ["SR_B4", "SR_B5", "SR_B6"])
+
+b) R5-G6-B4
+
+c) R6-G4-B5
+
+d) R6-G5-B4
+
 
 
 ## Lendo os valores do pixels
 Agora, vamos fazer a leitura de pixels para os seguintes alvos/temas: vegetação, água, área urbana e solo. 
 Vamos começar com vegetação. Para isso aproxime até algum tipo de vegetação.
-Dica: Desabilite os 'Layers' desnecessários para tornar mais leve a renderização da imagem de satélite (![image](https://user-images.githubusercontent.com/41900626/179014761-11fdc2a0-eaf1-4a8c-a2d0-496c29492bbb.png)
-)
+Dica: Comente a camada com a imagem sem contraste, comentando a linha de código (adicione // na frente):
+```JavaScript
+   //Map.addLayer(imagem, {bands: ["SR_B4", "SR_B3", "SR_B2"]}, "sem contraste");
+```
 
 Agora clique em 'Inspector' no lado direito, parte superior ![image](https://user-images.githubusercontent.com/41900626/179014873-47fec4b4-a09b-4b01-995d-614fab5afd08.png). Como a própira janela sugere 'Click on the map to inspect the layers.' ao clicar no mapa, você pode inspecionar o valor dos pixels em cada banda espectral. Ao clicar no mapa, os valores aparecerão na janela 'Inspector'.
 
