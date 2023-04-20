@@ -169,19 +169,25 @@ d) R6-G5-B4
 ## Lendo os valores do pixels
 Agora, vamos fazer a leitura de pixels para os seguintes alvos/temas: vegetação, água, área urbana e solo. 
 Vamos começar com vegetação. Para isso aproxime até algum tipo de vegetação.
-Dica: Comente a camada com a imagem sem contraste, comentando a linha de código (adicione // na frente):
+Dica: Comente a camada com a imagem sem contraste, comentando a linha de código (adicione '//' na frente) para evitar de carregar uma camada que não usaremos:
 ```JavaScript
    //Map.addLayer(imagem, {bands: ["SR_B4", "SR_B3", "SR_B2"]}, "sem contraste");
 ```
 
-Agora clique em 'Inspector' no lado direito, parte superior ![image](https://user-images.githubusercontent.com/41900626/179014873-47fec4b4-a09b-4b01-995d-614fab5afd08.png). Como a própira janela sugere 'Click on the map to inspect the layers.' ao clicar no mapa, você pode inspecionar o valor dos pixels em cada banda espectral. Ao clicar no mapa, os valores aparecerão na janela 'Inspector'.
+Agora clique na aba 'Inspector' no lado direito, parte superior. Como a própira janela sugere '_Click on the map to inspect the layers._' ao clicar no mapa, você pode inspecionar o valor dos pixels em cada banda espectral. Ao clicar no mapa, os valores das Bandas no pixel clicado aparecerão na janela 'Inspector'.
 
-![image](https://user-images.githubusercontent.com/41900626/179015976-af83c367-7dda-4336-bb3c-c3a35df41548.png)
+![image](https://user-images.githubusercontent.com/41900626/233383135-bdcf384d-a47d-4b8c-8af8-35823a5b09a7.png)
+
 Talvez os valores dos pixels são mostrados em forma de gráfico de barras verticais.
 Ao clicar em 'List view' (![image](https://user-images.githubusercontent.com/41900626/179016714-127467d3-a359-41e5-ad59-12e13c668a63.png)), os valores exatos são mostrados na forma de uma lista.
-![image](https://user-images.githubusercontent.com/41900626/179016986-5e1e9f7b-4f90-46b5-b3ae-170fb44e0a60.png).
+
+![image](https://user-images.githubusercontent.com/41900626/233383631-576ff837-ee80-4d70-9c0f-f6283a2d0881.png)
+
 
 Repita a leitura de pixels para os outros alvos e observe as diferenças de valores entre eles e como isso se relaciona com o conteúdo teórico.
+Dica: Para uma boa interpretação é sempre bom olhar o comprimento de onda a que cada banda se refere, o que pode ser feito consultando os detalhes da imagem, como por exemplo:
+![image](https://user-images.githubusercontent.com/41900626/233384462-9c115891-d8cd-46d1-968a-bd1e14c3a372.png)
+
 
 
 ## Obrigado
