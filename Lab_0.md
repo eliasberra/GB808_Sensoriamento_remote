@@ -184,6 +184,21 @@ Ao clicar em 'List view' (![image](https://user-images.githubusercontent.com/419
 ![image](https://user-images.githubusercontent.com/41900626/233383631-576ff837-ee80-4d70-9c0f-f6283a2d0881.png)
 
 
+Alternativamente, podemos mostrar em um gráfico plano-cartesiano os valores dos pixels em cada banda:
+
+```Javascript
+//Plotar valor das bandas em gráfico  
+var chart = ui.Chart.image.regions({
+  image:imagem.select([ "SR_B2",  "SR_B3", "SR_B4", "SR_B5", "SR_B6", "SR_B7",]), 
+  regions:paranagua, 
+});
+print(chart)
+```
+![image](https://user-images.githubusercontent.com/41900626/233391580-45e6da89-0212-47e3-b8ca-b85145d29d48.png)
+Nessa opção, contudo, devemos criar para cada classe um ponto. No exemplo acima, o gráfico é produzido a partir do ponto representando 'paranagua'.
+
+
+
 Repita a leitura de pixels para os outros alvos e observe as diferenças de valores entre eles e como isso se relaciona com o conteúdo teórico.
 Dica: Para uma boa interpretação é sempre bom olhar o comprimento de onda a que cada banda se refere, o que pode ser feito consultando os detalhes da imagem, como por exemplo:
 ![image](https://user-images.githubusercontent.com/41900626/233384462-9c115891-d8cd-46d1-968a-bd1e14c3a372.png)
