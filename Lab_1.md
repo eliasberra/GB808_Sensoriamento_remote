@@ -22,13 +22,38 @@ O objetivo deste laboratório é criar uma composição colorida falsa-cor de Ma
 
 ----------
 
-## Recapitulando
+## Importando limite territorial de Mato Rico, PR
+Vamos utilizar os limites político-administrativos municipais conforme compilado pela FAO ('FAO GAUL: Global Administrative Unit Layers 2015, Second-Level Administrative Units').
+Nota: Para trabalhos que exigem maior precisão cartográfica no território brasileiro, recomenda-se a utilização das malhas municipais do IBGE.
+
+```JavaScript
+//------------Importar limite de Mato Rico, PR, com dados da FAO 
+
+var zeroLevel = ee.FeatureCollection("FAO/GAUL/2015/level0");// País                      
+var firstLevel = ee.FeatureCollection("FAO/GAUL/2015/level1");//Estado
+var secondLevel = ee.FeatureCollection("FAO/GAUL/2015/level2") ;//Município
+
+
+var Mato_Rico = secondLevel.filter(ee.Filter.eq('ADM2_NAME', 'Mato Rico'))
+Map.addLayer(Mato_Rico, {}, 'Mato Rico')
+```
+
+Você deve estar visualizando o município de Mato Rico, PR.
+![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/871d518c-0602-494a-a067-9405cb797bb2)
 
 
 
-## Calcular a área de cada classe temática
+## Selecionar imagem do satélite Landsat 9 e recortar para Mato Rico
 
-
+```JavaScript
+//------------Selecionar imagem do satélite Landsat 9 e recortar para Mato Rico
+var imagem_selecionada = 
+      ee.ImageCollection('LANDSAT/LC09/C02/T1_L2') 
+    .filterBounds(Mato_Rico)
+    .filterDate('2023-05-01', '2023-05-30')  
+    .median()//mediana de todos os valores em cada pixel
+    .clip(Mato_Rico)//recorta para mato Rico
+```
 
 ## Exportar mapa para impressão
 O GEE é excelente para processamento digital de imagens, mas não é o mais indicado para preparação de mapas para impressão. Para isso, vamos utilizar o QGIS.
