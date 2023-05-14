@@ -55,40 +55,91 @@ var imagem_selecionada =
     .clip(Mato_Rico)//recorta para mato Rico
 ```
 
+Agora vamos criar duas composições coloridas: 
+
+1) composição cores-verdadeiras:
+```JavaScript
+//composição cor-verdadeira
+var corVerdadeira = {bands:['SR_B4',//Banda do vermelho
+                    'SR_B3',//Banda do verde
+                    'SR_B2'],//Banda do azul
+                     min:7000, max: 20000};//Contraste da composição   
+```
+               
+
+2) composição falsa-cor:
+```JavaScript
+//composição falsa-cor
+var falsaCor = {bands:['SR_B6',//Infravermelho médio
+                    'SR_B5',//Infravermelho próximo 
+                    'SR_B4'],//Vermelho
+                    min:7000, max: 25000};//Contraste da composição   
+```
+
+Adicione no visualizador de mapas as duas composições
+```JavaScript
+Map.addLayer(imagem_selecionada, corVerdadeira, 'Mato Rico-cor verdadeira');
+Map.addLayer(imagem_selecionada, falsaCor, 'Mato Rico-falsa cor');
+```
+
+Você deve estar visualizando as duas composições, as quais estão disponíveis na aba 'Layers'.
+![image](https://github.com/eliasberra/SR_GB808_2023/assets/41900626/13ffeb8e-0da8-410e-8559-ab43c64e6e13)
+
+Escolha uma das duas composições para exportar para impressão. Você pode basear sua escolha respondendo: Em qual das composições as feições terrestres ficam melhor fotoidentificáveis?
+
 ## Exportar mapa para impressão
-O GEE é excelente para processamento digital de imagens, mas não é o mais indicado para preparação de mapas para impressão. Para isso, vamos utilizar o QGIS.
-Então, precisamos exportar a imagem classificada para, depois, importá-la no QGIS.
+O GEE é excelente para processamento digital de imagens (PDI), mas não é o mais indicado para preparação/edição de mapas para impressão. Para isso, vamos utilizar o software QGIS.
+Então, precisamos exportar a imagem selecionada para, depois, importá-la no QGIS.
+Primeiramente, vamos transformar a composição escolhida em uma imagem RGB para exportação.
+```JavaScript
+//------------Preparar uma composição colorida RGB para exportação
+ var composicaoEscolhida = imagem_selecionada.visualize(falsaCor);// OU corVerdadeira
+```
+
+Agora vamos exportar essa composição RGB para o Google Drive.
 
 ```JavaScript
-//-----------------Preparar mapa temático para impressão--------------
-// --- Exportar imagem classificada para o Google Drive---
-Export.image.toDrive({image: classificada,//indica qual imagem será exportada 
-                    description: 'Exportar_classificada', //descrição da tarefa que aparecerá em Tasks
+//------------Preparar uma composição colorida RGB para exportação
+ var composicaoEscolhida = imagem_selecionada.visualize(falsaCor);// OU corVerdadeira
+ 
+//------------ Exportar imagem RGB para o Google Drive---
+Export.image.toDrive({image: composicaoEscolhida,//indica qual imagem será exportada 
+                    description: 'Exportar_RGB', //descrição da tarefa que aparecerá em Tasks
                     folder: 'GB808',//pasta no Google Drive onde será salva a imagem.
-                    fileNamePrefix: 'Classificada',//nome da imagem a ser salva                     
-                    scale: 30,//resolução espacial que será salva a imagem 
+                    fileNamePrefix: 'Composicao_Colorida_654',//nome da imagem a ser salva                     
+                    region: Mato_Rico,//Tamanho da imagem a ser exportada
+                    scale: 30,//resolução espacial na qual será salva a imagem                     
                     });
 ```
-A tarefa de exportação irá aparecer na aba 'Tasks'.
-![image](https://user-images.githubusercontent.com/41900626/180433984-1c2e8922-20f6-4af7-844a-07c94f30fb1d.png)
+A tarefa de exportação irá aparecer na aba 'Tasks' (canto direito superior).
 
-Em 'Exportar_classificada', clique em _Run_.
-Na janela que abre, clique em _Run_. Você pode modificar os parâmetros se julgar necessário.
-![image](https://user-images.githubusercontent.com/41900626/180451150-ecbbcee8-8be8-41b1-a10b-6dd8af4c8b30.png)
 
-Pronto, a imagem classificada está salva no seu Google Drive (![image](https://user-images.githubusercontent.com/41900626/180434989-c67e7765-7ddd-4e5d-8371-ea3a3e51ce0d.png)) e pode ser importada no QGIS.
+Em 'Exportar_RGB', clique em _Run_.
+![image](https://github.com/eliasberra/SR_GB808_2023/assets/41900626/a3609200-0fc0-43fa-8ac6-8287a8831949)
+Na janela que abre, clique novamente em _Run_. Você pode modificar os parâmetros se julgar necessário.
+![image](https://github.com/eliasberra/SR_GB808_2023/assets/41900626/680f20e5-c065-4af4-93be-4cc9bc42b3ee)
+
+
+
+
+Pronto, a imagem RGB está salva no seu Google Drive, de acordo com o nome definido acima em 'folder:' (![image](https://user-images.githubusercontent.com/41900626/180434989-c67e7765-7ddd-4e5d-8371-ea3a3e51ce0d.png)). Agora, ela pode ser baixada e importada no QGIS.
 
 
 
 ## Preparando mapa para impressão no QGIS
-Baixe a imagem 'Classificada.tif' para uma pasta no seu computador.
-Abra o QGIS e importe a imagem.
-Acesse as 'Propriedades' da imagem e observe o item 'Sistema de Referência de Coordenadas (SRC)'
-![image](https://user-images.githubusercontent.com/41900626/180450171-288ace23-719a-4570-a818-78c9b54a67bb.png)
-Como se pode ver, o SRC está como  'EPSG:32622 - WGS 84 / UTM zone 22N'. O que aparenta ser, em um primiero momento, um erro, é uma metodologia adotada pela distribuidora das cenas Landsat (USGS) para otimizar alguns processamentos. Veja mais informações na matéria ['Why do Landsat scenes in the Southern Hemisphere display negative UTM values?'](https://www.usgs.gov/faqs/why-do-landsat-scenes-southern-hemisphere-display-negative-utm-values).
+Baixe a imagem 'Composicao_Colorida_654.tif' para uma pasta no seu computador.
+Abra o QGIS e importe a imagem. Você deve estar visualizando algo parecido com a captura de tela abaixo.
+![image](https://github.com/eliasberra/SR_GB808_2023/assets/41900626/b95ab977-4aab-4e22-a61b-238502500e9d)
 
-Deixe o SRC como está.
-Agora vamos identificar as classes com nomes que tragam um significado claro para o leitor do mapa.
+Dica: Você pode atibuir transparência à cor preta (pixels com valores = 0)
+![image](https://github.com/eliasberra/SR_GB808_2023/assets/41900626/f93926c7-ada0-4608-9481-be7765d9669d)
+
+
+Agora, no QGIS, acesse o Layout de Impressão e prepare um mapa para impressão (bem bonito!). Lembre das aulas de Cartografia Temática, onde utilizamos banstante essa funcionalidade.
+![image](https://github.com/eliasberra/SR_GB808_2023/assets/41900626/9814fe8e-4a71-406f-92cc-f114aae839bd)
+
+
+
 
 
 
@@ -96,4 +147,5 @@ Agora vamos identificar as classes com nomes que tragam um significado claro par
 
 -------
 ### Obrigado
+
 
