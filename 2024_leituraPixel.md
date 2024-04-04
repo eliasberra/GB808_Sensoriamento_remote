@@ -123,7 +123,7 @@ Consegues descobrir quando foi coletada a cena?.
   // Adiciona uma composição RGB em cores verdadeiras (Bandas 3,2 e 1) ao mapa, primeiramente sem contraste.
    Map.addLayer(imagem, {bands: ["SR_B4", "SR_B3", "SR_B2"]}, "sem contraste");
 ```
-![image](https://user-images.githubusercontent.com/41900626/233187338-d682c43c-1e35-426e-91d1-25abc4b62a43.png)
+![alt text](image-7.png)
 
 Observe como a composição colorida se apresenta bastante escura.
 
@@ -140,8 +140,7 @@ Agora, vamos definir um contraste para melhorar a vizualização da nossa compos
   // Adicione a imagem ao mapa, usando os parâmetros de visualização.
   Map.addLayer(imagem, parVizualizacao, "imagem de cor verdadeira");
 ```
-![image](https://user-images.githubusercontent.com/41900626/233188509-d466dcb2-4322-4c70-a9fa-3192b982280f.png)
-
+![alt text](image-8.png)
 
 
 10. Este código especifica que para uma imagem de cores verdadeiras, as bandas 4,3 e 2 devem ser usadas na composição RGB. Depois que a imagem aparecer no mapa, você poderá ampliar e explorar Piraquara e arredores. Os símbolos (+) e (-) no canto superior esquerdo do ambinete de mapa podem ser usados para aplicar diferentes níveis de zoom na cena (também possível com a roda de rolagem (scroll) do mouse/trackpad). 
