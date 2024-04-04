@@ -57,11 +57,11 @@ O objetivo deste laboratório é fornecer uma introdução ao ambiente de proces
 ## 2. Procurando uma imagem
 
 1. Logo acima do painel Codificação está a barra de pesquisa. 
-Procure 'Paranaguá', PR, nesta barra de pesquisa GEE e clique no resultado para deslocar e ampliar o mapa para Paranaguá. Amplie/reduza o zoom usando a roda (scroll) do _mouse_.
+Procure 'Piraquara', PR, nesta barra de pesquisa GEE e clique no resultado para deslocar e ampliar o mapa para Piraquara. Amplie/reduza o zoom usando a roda (scroll) do _mouse_.
 ![image](https://user-images.githubusercontent.com/41900626/178794965-07dde932-44de-4acf-a6d0-58649b7bad95.png)
 
 
-2. Use a ferramenta de geometria 'Add a marker' para marcar um ponto sobre a cidade de Paranaguá (uma vez selecionado o marcador é só clicar sobre o mapa base). Depois de criar o ponto de geometria, você o verá adicionado ao seu painel Codificação como uma variável (var) sob o título 'Imports'.
+2. Use a ferramenta de geometria 'Add a marker' para marcar um ponto sobre a cidade de Piraquara (uma vez selecionado o marcador é só clicar sobre o mapa base). Depois de criar o ponto de geometria, você o verá adicionado ao seu painel Codificação como uma variável (var) sob o título 'Imports'.
 ![image](https://user-images.githubusercontent.com/41900626/178795354-74c3042e-707d-4625-b806-5cb0f4b48141.png)
 
 3. Renomeie o ponto resultante como 'paranagua' clicando no nome da 'Imports' (que é chamado de 'geometry' por padrão).
@@ -88,7 +88,7 @@ Após essa analise, volte alguns passos e clique no botão 'Import'.
 ![image](https://user-images.githubusercontent.com/41900626/233172525-7c150f6c-dafb-4b5b-99b7-274703f80863.png)
 
 
-6. É importante entender que agora adicionamos acesso à coleção completa de imagens do Landsat-9 ao nosso script (ou seja, todas as imagens que foram coletadas até a data de hoje). Para este exercício, não queremos carregar todas essas imagens - queremos uma única imagem, livre de nuvens, sobre a cidade de Paranaguá. Dessa forma, devemos filtrar a coleção de imagens utilizando alguns critérios, como intervalo de aquisição, localização espacial e cobertura de nuvens.
+6. É importante entender que agora adicionamos acesso à coleção completa de imagens do Landsat-9 ao nosso script (ou seja, todas as imagens que foram coletadas até a data de hoje). Para este exercício, não queremos carregar todas essas imagens - queremos uma única imagem, livre de nuvens, sobre a cidade de Piraquara. Dessa forma, devemos filtrar a coleção de imagens utilizando alguns critérios, como intervalo de aquisição, localização espacial e cobertura de nuvens.
 
 
 
@@ -109,7 +109,7 @@ print("Uma cena do Landsat 9:", imagem); // imprime a imagem selecionada no cons
 ```
 
 8. Em seguida, clique no botão "Run" (executar) e veja o GEE fazer sua mágica... 
-Este pedaço de código pesquisará o arquivo completo do Landsat-9, encontrará imagens localizadas em Paranaguá, PR (na interseção com o ponto que você escolheu, para ser mais preciso), irá classificá-las de acordo com a porcentagem de cobertura de nuvens e, em seguida, retornará a imagem com menor cobertura de nuvens. As informações relacionadas a esta imagem serão impressas no Console (lado direito), onde está listada como "Uma cena do Landsat 9:" com alguns detalhes sobre essa cena.
+Este pedaço de código pesquisará o arquivo completo do Landsat-9, encontrará imagens localizadas em Piraquara, PR (na interseção com o ponto que você escolheu, para ser mais preciso), irá classificá-las de acordo com a porcentagem de cobertura de nuvens e, em seguida, retornará a imagem com menor cobertura de nuvens. As informações relacionadas a esta imagem serão impressas no Console (lado direito), onde está listada como "Uma cena do Landsat 9:" com alguns detalhes sobre essa cena.
 Consegues descobrir quando foi coletada a cena?.
 ![image](https://user-images.githubusercontent.com/41900626/233186377-ec8688f4-6041-4303-8b02-cb21f9de91b1.png)
 
@@ -145,7 +145,7 @@ Agora, vamos definir um contraste para melhorar a vizualização da nossa compos
 
 
 
-10. Este código especifica que para uma imagem de cores verdadeiras, as bandas 4,3 e 2 devem ser usadas na composição RGB. Depois que a imagem aparecer no mapa, você poderá ampliar e explorar Paranaguá e arredores. Os símbolos (+) e (-) no canto superior esquerdo do ambinete de mapa podem ser usados para aplicar diferentes níveis de zoom na cena (também possível com a roda de rolagem (scroll) do mouse/trackpad). 
+10. Este código especifica que para uma imagem de cores verdadeiras, as bandas 4,3 e 2 devem ser usadas na composição RGB. Depois que a imagem aparecer no mapa, você poderá ampliar e explorar Piraquara e arredores. Os símbolos (+) e (-) no canto superior esquerdo do ambinete de mapa podem ser usados para aplicar diferentes níveis de zoom na cena (também possível com a roda de rolagem (scroll) do mouse/trackpad). 
 Um clique com o botão esquerdo do mouse abre a "mão" para mover a imagem ao redor. Mover o mouse sobre o botão 'Layers' (camadas) no canto superior direito do painel do mapa mostra as camadas disponíveis e permite ajustar a opacidade das diferentes camadas.
 Experimente diferentes limiares de contraste alterando os valores de 'min:' (valor mínimo) e 'max:' (valor máximo).
 
