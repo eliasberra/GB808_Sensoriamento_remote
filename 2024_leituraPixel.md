@@ -1,5 +1,5 @@
 # Sensoriamento Remoto
-Lab 0 - Composição colorida e leitura de pixels
+Composição colorida e leitura de pixels
 --------------
 
 ### Agradecimentos
