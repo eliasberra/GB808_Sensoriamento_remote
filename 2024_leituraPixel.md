@@ -63,7 +63,7 @@ Procure 'Piraquara', PR, nesta barra de pesquisa GEE e clique no resultado para 
 2. Use a ferramenta de geometria 'Add a marker' para marcar um ponto sobre a cidade de Piraquara (uma vez selecionado o marcador é só clicar sobre o mapa base). Depois de criar o ponto de geometria, você o verá adicionado ao seu painel Codificação como uma variável (var) sob o título 'Imports'.
 ![alt text](image-1.png)
 
-3. Renomeie o ponto de 'geometry' para 'paranagua'.![alt text](image-2.png)
+3. Renomeie o ponto de 'geometry' para 'piraquara'.![alt text](image-4.png)
 
  
  Nota: Você já pode salvar seu código em ![image](https://user-images.githubusercontent.com/41900626/178795780-e672f2b2-2472-4e9c-b32c-8caef6e928da.png)
@@ -83,7 +83,7 @@ Após essa analise, volte alguns passos e clique no botão 'Import'.
 
 
 5. Após clicar em 'Import', as imagens/bandas Landsat-9 serão adicionadas às nossas importações ('Imports') no painel de Codificação como uma variável (var). Ele será listado abaixo do ponto de geometria do cidade de 'paranagua' com o nome padrão "imageCollection" (coleção de imagens). Vamos renomeá-lo para “land9” clicando em 'imageCollection' e digitando “land9”.
-![image](https://user-images.githubusercontent.com/41900626/233172525-7c150f6c-dafb-4b5b-99b7-274703f80863.png)
+![alt text](image-5.png)
 
 
 6. É importante entender que agora adicionamos acesso à coleção completa de imagens do Landsat-9 ao nosso script (ou seja, todas as imagens que foram coletadas até a data de hoje). Para este exercício, não queremos carregar todas essas imagens - queremos uma única imagem, livre de nuvens, sobre a cidade de Piraquara. Dessa forma, devemos filtrar a coleção de imagens utilizando alguns critérios, como intervalo de aquisição, localização espacial e cobertura de nuvens.
@@ -98,10 +98,11 @@ Você pode digitar manualmente o código abaixo, o que é legal para aprender a 
 
 ```JavaScript
 var imagem = ee.Image(land9 //Coleção de imagens 
-            .filterDate("2021-01-01", "2023-04-19") //filtro de datas
-            .filterBounds(paranagua) //filtro de local
+            .filterDate("2023-06-01", "2023-08-30") //filtro de datas
+            .filterBounds(piraquara) //filtro de local
             .sort("CLOUD_COVER") //organizar imagens pela % de cobertura de nuvens 
             .first()); //seleciona a primeira imagem desta coleção - ou seja, a imagem com menor cobertura de nuvens
+  
   
 print("Uma cena do Landsat 9:", imagem); // imprime a imagem selecionada no console.
 ```
@@ -109,7 +110,7 @@ print("Uma cena do Landsat 9:", imagem); // imprime a imagem selecionada no cons
 8. Em seguida, clique no botão "Run" (executar) e veja o GEE fazer sua mágica... 
 Este pedaço de código pesquisará o arquivo completo do Landsat-9, encontrará imagens localizadas em Piraquara, PR (na interseção com o ponto que você escolheu, para ser mais preciso), irá classificá-las de acordo com a porcentagem de cobertura de nuvens e, em seguida, retornará a imagem com menor cobertura de nuvens. As informações relacionadas a esta imagem serão impressas no Console (lado direito), onde está listada como "Uma cena do Landsat 9:" com alguns detalhes sobre essa cena.
 Consegues descobrir quando foi coletada a cena?.
-![image](https://user-images.githubusercontent.com/41900626/233186377-ec8688f4-6041-4303-8b02-cb21f9de91b1.png)
+![alt text](image-6.png)
 
 
 
