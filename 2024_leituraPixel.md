@@ -57,9 +57,8 @@ O objetivo deste laboratório é fornecer uma introdução ao ambiente de proces
 ## 2. Procurando uma imagem
 
 1. Logo acima do painel Codificação está a barra de pesquisa. 
-Procure 'Paranaguá', PR, nesta barra de pesquisa GEE e clique no resultado para deslocar e ampliar o mapa para Paranaguá. Amplie/reduza o zoom usando a roda (scroll) do _mouse_.
-![image](https://user-images.githubusercontent.com/41900626/178794965-07dde932-44de-4acf-a6d0-58649b7bad95.png)
-
+Procure 'Piraquara', PR, nesta barra de pesquisa GEE e clique no resultado para deslocar e ampliar o mapa para Piraquara. Amplie/reduza o zoom usando a roda (scroll) do _mouse_.
+![alt text](image.png)
 
 2. Use a ferramenta de geometria 'Add a marker' para marcar um ponto sobre a cidade de Paranaguá (uma vez selecionado o marcador é só clicar sobre o mapa base). Depois de criar o ponto de geometria, você o verá adicionado ao seu painel Codificação como uma variável (var) sob o título 'Imports'.
 ![image](https://user-images.githubusercontent.com/41900626/178795354-74c3042e-707d-4625-b806-5cb0f4b48141.png)
