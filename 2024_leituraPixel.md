@@ -82,7 +82,7 @@ Após essa analise, volte alguns passos e clique no botão 'Import'.
 ![image](https://user-images.githubusercontent.com/41900626/233185823-21fff982-9614-4789-be7f-829f87ed7f50.png)
 
 
-5. Após clicar em 'Import', as imagens/bandas Landsat-9 serão adicionadas às nossas importações ('Imports') no painel de Codificação como uma variável (var). Ele será listado abaixo do ponto de geometria do cidade de 'paranagua' com o nome padrão "imageCollection" (coleção de imagens). Vamos renomeá-lo para “land9” clicando em 'imageCollection' e digitando “land9”.
+5. Após clicar em 'Import', as imagens/bandas Landsat-9 serão adicionadas às nossas importações ('Imports') no painel de Codificação como uma variável (var). Ele será listado abaixo do ponto de geometria do cidade de 'piraquara' com o nome padrão "imageCollection" (coleção de imagens). Vamos renomeá-lo para “land9” clicando em 'imageCollection' e digitando “land9”.
 ![alt text](image-5.png)
 
 
@@ -144,7 +144,7 @@ Agora, vamos definir um contraste para melhorar a vizualização da nossa compos
 
 
 10. Este código especifica que para uma imagem de cores verdadeiras, as bandas 4,3 e 2 devem ser usadas na composição RGB. Depois que a imagem aparecer no mapa, você poderá ampliar e explorar Piraquara e arredores. Os símbolos (+) e (-) no canto superior esquerdo do ambinete de mapa podem ser usados para aplicar diferentes níveis de zoom na cena (também possível com a roda de rolagem (scroll) do mouse/trackpad). 
-Um clique com o botão esquerdo do mouse abre a "mão" para mover a imagem ao redor. Mover o mouse sobre o botão 'Layers' (camadas) no canto superior direito do painel do mapa mostra as camadas disponíveis e permite ajustar a opacidade das diferentes camadas.
+Um clique com o botão esquerdo do mouse abre a "mão" para mover a imagem ao redor. Ao mover o mouse sobre o botão 'Layers' (camadas) no canto superior direito do painel do mapa mostra as camadas disponíveis e permite ajustar a opacidade das diferentes camadas.
 Experimente diferentes limiares de contraste alterando os valores de 'min:' (valor mínimo) e 'max:' (valor máximo).
 
 
@@ -173,27 +173,25 @@ Dica: Comente a camada com a imagem sem contraste, comentando a linha de código
 ```
 
 Agora clique na aba 'Inspector' no lado direito, parte superior. Como a própira janela sugere '_Click on the map to inspect the layers._' ao clicar no mapa, você pode inspecionar o valor dos pixels em cada banda espectral. Ao clicar no mapa, os valores das Bandas no pixel clicado aparecerão na janela 'Inspector'.
-
-![image](https://user-images.githubusercontent.com/41900626/233383135-bdcf384d-a47d-4b8c-8af8-35823a5b09a7.png)
-
 Talvez os valores dos pixels são mostrados em forma de gráfico de barras verticais.
 Ao clicar em 'List view' (![image](https://user-images.githubusercontent.com/41900626/179016714-127467d3-a359-41e5-ad59-12e13c668a63.png)), os valores exatos são mostrados na forma de uma lista.
 
-![image](https://user-images.githubusercontent.com/41900626/233383631-576ff837-ee80-4d70-9c0f-f6283a2d0881.png)
+![alt text](image-9.png)
 
 
-Alternativamente, podemos mostrar em um gráfico plano-cartesiano os valores dos pixels em cada banda:
+Alternativamente, podemos mostrar em um gráfico plano-cartesiano os valores dos pixels em cada banda espectral:
 
 ```Javascript
 //Plotar valor das bandas em gráfico  
 var chart = ui.Chart.image.regions({
   image:imagem.select([ "SR_B2",  "SR_B3", "SR_B4", "SR_B5", "SR_B6", "SR_B7",]), 
-  regions:paranagua, 
+  regions:piraquara, 
 });
 print(chart)
 ```
-![image](https://user-images.githubusercontent.com/41900626/233391580-45e6da89-0212-47e3-b8ca-b85145d29d48.png)
-Nessa opção, contudo, devemos criar para cada classe um ponto. No exemplo acima, o gráfico é produzido a partir do ponto representando 'paranagua'.
+![alt text](image-10.png)
+
+Nessa opção, contudo, devemos criar para cada classe um ponto. No exemplo acima, o gráfico é produzido a partir do ponto representando 'piraquara'.
 
 
 
