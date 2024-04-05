@@ -183,17 +183,27 @@ Alternativamente, podemos mostrar em um gráfico plano-cartesiano os valores dos
 
 ```Javascript
 //Plotar valor das bandas em gráfico  
-var chart = ui.Chart.image.regions({
+var grafico = ui.Chart.image.regions({
   image:imagem.select([ "SR_B2",  "SR_B3", "SR_B4", "SR_B5", "SR_B6", "SR_B7",]), 
   regions:piraquara, 
 });
-print(chart)
+print(grafico)
 ```
-![alt text](image-10.png)
+![alt text](image-11.png)
 
 Nessa opção, contudo, devemos criar para cada classe um ponto. No exemplo acima, o gráfico é produzido a partir do ponto representando 'piraquara'.
 
+Podemos produzir gráficos somente com as bandas utilizadas na composição colorida:
+```Javascript
+//Plotar valor das bandas utilizadas na composição colorida somente
+var veg = ui.Chart.image.regions({
+  image:imagem.select(parVizualizacao.bands), 
+  regions:vegetacao, 
+});
+print(veg)
+```
 
+![alt text](image-13.png)
 
 Repita a leitura de pixels para os outros alvos e observe as diferenças de valores entre eles e como isso se relaciona com o conteúdo teórico.
 Dica: Para uma boa interpretação é sempre bom olhar o comprimento de onda a que cada banda se refere, o que pode ser feito consultando os detalhes da imagem, como por exemplo:
